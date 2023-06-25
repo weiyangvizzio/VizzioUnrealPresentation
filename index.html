@@ -151,7 +151,7 @@
 						<h5>GameMode</h5>
 					</section>
 					<section>
-						NOTE: With 4.14, the GameMode Class got split into GameModeBase and GameMode. <br>
+						NOTE: With 4.14, the GameMode Class got split into GameModeBase and GameMode.
 						GameModeBase has less features, because some games just might not need the full feature list
 						of the old GameMode Class.
 						The class AGameMode is used to define the RULES of your game. This includes
@@ -163,7 +163,50 @@
 
 				<section>
 					<section>
-						
+						<h2> Game State </h2>
+					</section>
+					<section>
+						NOTE: With 4.14, the GameState Class got split into GameStateBase and GameState.
+						GameStateBase has less features, because some games just might not need the full feature list
+						of the old GameState Class.
+						The class AGameState is probably the most important class for shared information
+						between Server and Clients. The GameState is used to keep track of the current State of the Game.
+						This includes, for Multiplayer important, a List of connected Players (APlayerState).
+						The GameState is replicated to all Clients. So everyone can access it. This makes
+						the GameState to one of the most centered classes for Multiplayer Games.
+						While the GameMode would tell how much kills are needed to win, the GameState would
+						keep track of the current amount of kills of each Player and/or Team!
+						What information you store here is completely up to you.
+						It could be an array of scores or an array of a custom struct
+						that you use to keep track of groups and guilds.
+					</section>
+				</section>
+
+				<section>
+					<h2> Pawn </h2>
+				</section>
+				<section>
+					The class APawn is the 'Actor' that the Player actually controls. Most of the
+					time it's a human character, but it could also be a cat, plane, ship, block, etc.
+					The Player can only possess one Pawn at a time, but can easily switch
+					between Pawns by un-possessing and re-possessing them.
+					The Pawn is mostly replicated to all Clients.
+					The Pawn's child class ACharacter is often used, because it comes with an already
+					networked MovementComponent, which handles replicating the Position, Rotation, etc.
+					of a Players Character.
+				</section>
+				<section>
+					<section>
+						<h2> PlayerController </h2>
+					</section>
+					<section>
+						The class APlayerController might be the most interesting and complicated
+						Class that we come across. It's also the center for a lot of Client stuff, since this
+						is the first Class that the Client actually 'owns'.
+						The PlayerController can be seen as the 'Input' of the Player. It is the link of the
+						Player with the Server. This means, every Client has one PlayerController.
+						A Client's PlayerController only exists on himself AND the Server, but other
+						Clients don't know about other PlayerController.
 					</section>
 				</section>
 			</div>
