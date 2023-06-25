@@ -183,18 +183,24 @@
 				</section>
 
 				<section>
-					<h2> Pawn </h2>
+					<section>
+						<h2> Pawn </h2>
+					</section>
+					<section>
+						The class APawn is the 'Actor' that the Player actually controls. Most of the
+						time it's a human character, but it could also be a cat, plane, ship, block, etc.
+						The Player can only possess one Pawn at a time, but can easily switch
+						between Pawns by un-possessing and re-possessing them.
+						The Pawn is mostly replicated to all Clients.
+						The Pawn's child class ACharacter is often used, because it comes with an already
+						networked MovementComponent, which handles replicating the Position, Rotation, etc.
+						of a Players Character.
+					</section>
+					<section>
+						<iframe src="https://drive.google.com/file/d/11idBt2OZwwaRh1hiHc0Q2YA4fZrBLhrB/preview" width="640" height="480" allow="autoplay"></iframe>
+					</section>
 				</section>
-				<section>
-					The class APawn is the 'Actor' that the Player actually controls. Most of the
-					time it's a human character, but it could also be a cat, plane, ship, block, etc.
-					The Player can only possess one Pawn at a time, but can easily switch
-					between Pawns by un-possessing and re-possessing them.
-					The Pawn is mostly replicated to all Clients.
-					The Pawn's child class ACharacter is often used, because it comes with an already
-					networked MovementComponent, which handles replicating the Position, Rotation, etc.
-					of a Players Character.
-				</section>
+
 				<section>
 					<section>
 						<h2> PlayerController </h2>
@@ -207,6 +213,29 @@
 						Player with the Server. This means, every Client has one PlayerController.
 						A Client's PlayerController only exists on himself AND the Server, but other
 						Clients don't know about other PlayerController.
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>HUD</h2>
+					</section>
+					<section>
+						The class AHUD is a Class that is only available on each Client and
+						can be accessed through the PlayerController. It will be automatically spawned.
+						Before UMG (Unreal Motion Graphics) has been released, the HUD Class has been used
+						to draw text, textures and more in the viewport of the Client.
+						By now, Widgets replaced the HUD Class most of the time.
+						You can still use the HUD Class to debug or maybe have an isolated area to
+						manage spawning, showing, hiding and destroying Widgets.
+						Since the HUD isn't directly linked to Networking, examples would only show Singleplayer stuff.
+						That's why I will skip them.
+					</section>
+					<section>
+						<img src="assets/splitscreen.webp" alt="" srcset="">
+					</section>
+					<section>
+						<img src="assets/projectionmapping.png" alt="">
 					</section>
 				</section>
 			</div>
