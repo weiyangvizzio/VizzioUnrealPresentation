@@ -55,6 +55,9 @@
 					<section>
 						<h3> These topics should only be consumed by people with a base understanding of the Singleplayer Game Framework of Unreal Engine</h3>
 					</section>
+					<section>
+						<h3> This presentation will not cover how to use Unreal Engine as a beginner</h3>
+					</section>
 				</section>
 
 				<section>
@@ -73,8 +76,95 @@
 					</section>
 					<section>
 						<img src="assets/captureFlag.webp" alt="" srcset="">
-					</section>
+					</section> 
+				</section>
 
+				<section>
+					<section>
+						<h2> Unreal Engine's Basic Architecture </h2>
+					</section>
+					<section>
+						<h3> Building Blueprint sample </h3>
+						<img src="assets/BlueprintArch.jpg" alt="" srcset="">
+					</section>
+					<section>
+						<h3> Unreal's Relationship Architecture </h3>
+						<img src="assets/Page8.webp" alt="" srcset="">
+					</section>
+					<section>
+						<img src="assets/Page9.webp" alt="" srcset="">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2> Unreal's Structure </h2>
+					</section>
+					<section>
+						<h3> Firstly. Things I would suggest stop using </h3>
+						<img src="assets/GetAllActors.jpg" alt="" srcset="">
+					</section>
+					<section>
+						<h3> Source code of Get All Actor </h3>
+						<pre><code data-trim data-noescape>
+							void UGameplayStatics::GetAllActorsOfClass(const UObject* WorldContextObject, TSubclassOf<AActor> ActorClass, TArray<AActor*>& OutActors)
+								{
+									QUICK_SCOPE_CYCLE_COUNTER(UGameplayStatics_GetAllActorsOfClass);
+									OutActors.Reset();
+								
+									// We do nothing if no is class provided, rather than giving ALL actors!
+									if (ActorClass)
+									{
+										if (UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull))
+										{
+											for (TActorIterator<AActor> It(World, ActorClass); It; ++It)
+											{
+												AActor* Actor = *It;
+												OutActors.Add(Actor);
+											}
+										}
+									}
+								}
+						</code></pre>
+					</section>
+					<section>
+						<h5>Manager Approach</h5>
+						<img src="assets/CompanyStructure.png" alt="" srcset="">
+					</section> 
+					<section>
+						<h3> Event Dispatchers </h3> 
+						<h5> Observer Pattern </h5>
+					</section>
+					<section>
+						<h3> Drag and drop from Scene </h3> 
+						<h5> Dependencies Injection </h5>
+					</section>
+					<section>
+						<h3> Gameplay Tags </h3> 
+						<h5> Observer Pattern + Hash + Binary search (Advance) </h5>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Unreal's Game "Manager"</h2>
+						<h5>GameMode</h5>
+					</section>
+					<section>
+						NOTE: With 4.14, the GameMode Class got split into GameModeBase and GameMode. <br>
+						GameModeBase has less features, because some games just might not need the full feature list
+						of the old GameMode Class.
+						The class AGameMode is used to define the RULES of your game. This includes
+						the used classes, like APawn, APlayerController, APlayerState and more.
+						It is only available on the Server. Clients don't have an object of the GameMode
+						and will only get a nullptr when trying to retrieve it.
+					</section>
+				</section>
+
+				<section>
+					<section>
+						
+					</section>
 				</section>
 			</div>
 		</div>
